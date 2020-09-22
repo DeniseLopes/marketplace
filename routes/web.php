@@ -24,3 +24,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/model', function(){
+
+    $user = App\User::find(1); //estancia da classe
+    $user->name = 'Usuário Teste Editado';
+    $user->email = 'email@teste.com';
+    $user->password = bcrypt('12345678'); //para encriptar a senha
+    $user->save();
+    return \App\User::all();
+});
+    
