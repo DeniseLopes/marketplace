@@ -27,11 +27,24 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/model', function(){
 
-    $user = App\User::find(1); //estancia da classe
+    /*$user = App\User::find(1); //estancia da classe
     $user->name = 'Usuário Teste Editado';
     $user->email = 'email@teste.com';
     $user->password = bcrypt('12345678'); //para encriptar a senha
-    $user->save();
+    $user->save();*/
+
+//MASS ASSIGMENT - ATRIBUIÇÃO EM MASSA
+   /* $user = App\User::create([
+        'name'     => 'Denise Lopes',
+        'email'    => 'denise@mail.com',
+        'password' => bcrypt('123456789')
+    ]);*/
+//MASS UPDATE
+    $user = App\User::find(42);
+    $user->update([
+        'name' => 'Denise Lopes mass update'
+    ]);//true ou false
+dd($user);
     return \App\User::all();
 });
     
