@@ -44,7 +44,7 @@ Route::get('/model', function(){
     $user->update([
         'name' => 'Denise Lopes mass update'
     ]);//true ou false
-dd($user);
+
     return \App\User::all();
 });
     
