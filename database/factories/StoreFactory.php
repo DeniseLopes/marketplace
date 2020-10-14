@@ -8,9 +8,9 @@ use Faker\Generator as Faker;
 $factory->define(\App\Store::class, function (Faker $faker) {
     return [
         'name'=> $faker->name,
-        'description'=>$faker->sentece,
+        'description'=>$faker->sentence,
         'phone'=> $faker->phoneNumber,
         'mobile_phone'=> $faker->phoneNumber,
-        'slug'=>'slug',
+        'slug'=>$faker->slug,
     ];
 });
