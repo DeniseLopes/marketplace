@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    $helloWorld = 'Hello World!!';
+    $helloWorld = 'Denise Rei!!';
 
     return view('welcome', compact('helloWorld'));
 });
@@ -40,11 +40,66 @@ Route::get('/model', function(){
         'password' => bcrypt('123456789')
     ]);*/
 //MASS UPDATE
-    $user = App\User::find(42);
+   /* $user = App\User::find(42);
     $user->update([
         'name' => 'Denise Lopes mass update'
-    ]);//true ou false
+    ]);//true ou false*/
 
-    return \App\User::all();
+    //Como eu faria para pegar a loja de um usuario
+    //$user = App\User::find(4);
+   // return $user->store;
+
+   //Como pegar os produtos de uma loja?
+   //$loja = App\Store::find(1);
+        //return $loja->products()->where('id', 1)->get();
+
+    //Pegar as categorias de uma loja
+   // $categoria = App\Category::find(1);
+   // $categoria->products;
+
+   //Criar uma loja para um usuario
+       /* $user = App\User::find(10);
+        $store = $user->store()->create([
+            'name'=>'loja teste',
+            'description'=>'loja teste de informatica',
+            'mobile_phone'=> '12-997133032',
+            'phone'=> '12 33333333',
+            'slug'=> 'loja-teste'
+        ]);
+
+        dd($store);*/
+   //Criar produto para uma loja
+        /*$store = App\Store::find(41);
+        $product = $store->products()->create([
+            'name'=> 'notebook dell',
+            'description'=> 'CORE I5 10gb',
+            'body'=> 'Qualquer coisa linda',
+            'price'=> 2999,90,
+            'slug' => 'notebook-dell',
+        ]);
+        dd($product);*/
+   //Criar uma categoria
+          /*  \App\Category::create([
+                'name'=> 'Games',
+                'description' => 'De mara',
+                'slug'=> 'games'
+            ]);
+
+            \App\Category::create([
+                'name'=> 'Games',
+                'description' => 'De mara',
+                'slug'=> 'games'
+            ]);
+
+            return \App\Category::all();*/
+   //Adicionar um produto para uma categoria ou vice-versa
+
+               /* $product = \App\Product::find(1);
+               dd($product->categories()->sync([2]));*/
+
+                
+
+        $product= \App\Product::find(1);
+        return $product->categories;
 });
     
