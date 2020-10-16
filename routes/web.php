@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Store Routes
+Route::get('/admin/stores', 'Admin\\StoreController@index');
+//-------------------------------------------------------------
 
 Route::get('/', function () {
     $helloWorld = 'Denise Rei!!';
@@ -17,15 +20,15 @@ Route::get('/', function () {
     return view('welcome', compact('helloWorld'));
 });
 
-Auth::routes();
+//Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+//Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/model', function(){
+//Route::get('/model', function(){
 
     /*$user = App\User::find(1); //estancia da classe
     $user->name = 'Usuário Teste Editado';
@@ -99,7 +102,7 @@ Route::get('/model', function(){
 
                 
 
-        $product= \App\Product::find(1);
-        return $product->categories;
-});
+      //  $product= \App\Product::find(1);
+       // return $product->categories;
+//});
     
