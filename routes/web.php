@@ -22,6 +22,11 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
         Route::get('/destroy/{store}', 'StoreController@destroy')->name('destroy');
         Route::put('/restore/{store}', 'StoreController@restore')->name('restore');
     });
+
+//Product Routes
+        
+        Route::resource('products', 'ProductController');
+        
 });
 
 //-------------------------------------------------------------

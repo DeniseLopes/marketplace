@@ -4,9 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Product;
 
 class ProductController extends Controller
 {
+    private $product;
+
+    public function __construct(Product $product)
+    {
+        $this->product = $product;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = $this->product->paginate(10);
+
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -24,7 +33,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $stores = \App\Store::all(['id', 'name']);
+
+        return view('admin.products.create', compact('stores'));
     }
 
     /**
@@ -35,7 +46,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -55,9 +66,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($product)
     {
-        //
+        $product = $this->product->find($product);
+
+        return view('admin.products.edit', compact('products'));
     }
 
     /**
@@ -67,9 +80,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $product)
     {
-        //
+        
     }
 
     /**
@@ -78,8 +91,8 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($product)
     {
-        //
+        
     }
 }
