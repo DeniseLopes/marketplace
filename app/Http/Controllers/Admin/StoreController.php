@@ -63,7 +63,7 @@ class StoreController extends Controller
 
     public function restore($store)
     {
-       // $store = \App\Store::onlyTrashed()->findOrFail($store);
+       $store = \App\Store::onlyTrashed()->findOrFail($store);
        
         
         $store->restore();

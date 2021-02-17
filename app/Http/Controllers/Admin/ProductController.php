@@ -13,16 +13,14 @@ class ProductController extends Controller
     public function __construct(Product $product)
     {
         $this->product = $product;
+        
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ 
+
     public function index()
     {
+        
         $products = $this->product->paginate(10);
-
         return view('admin.products.index', compact('products'));
     }
 
@@ -31,11 +29,13 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function create()
     {
-        $stores = \App\Store::all(['id', 'name']);
-
-        return view('admin.products.create', compact('stores'));
+      $stores = \App\Store::all(['id', 'name']);
+       
+       return view('admin.products.create', compact('stores'));
+        
     }
 
     /**
@@ -68,16 +68,16 @@ class ProductController extends Controller
      */
     public function edit($product)
     {
-        $product = $this->product->find($product);
+        $product = $this->product->findOrFail($product);
 
-        return view('admin.products.edit', compact('products'));
+        return view('admin.products.edit', compact('product'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $product
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $product)
@@ -93,6 +93,6 @@ class ProductController extends Controller
      */
     public function destroy($product)
     {
-        
+       
     }
 }
