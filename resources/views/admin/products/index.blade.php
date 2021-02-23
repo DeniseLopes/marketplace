@@ -1,13 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<a href="{{route('admin.products.create')}}" class="btn btnlg btn-success">Criar Produto</a>
+
 <table class="table table-striped">
     <thead>
         <tr>
             <th>id</th>
             <th>Nome</th>
-            <th>Descrição</th>
             <th>Preço</th>
             <th>Ações</th>
         </tr>
@@ -17,7 +16,6 @@
            <tr>
                <td>{{$product->id}}</td>
                <td>{{$product->name}}</td>
-               <td>{{$product->description}}</td>
                <td>{{$product->price}}</td>
                <td>
                    <a href="{{route('admin.products.edit', ['product'=>$product->id])}}" class="btn btn-sm btn-warning">Editar</a>      
@@ -27,6 +25,10 @@
        @endforeach
     </tbody>
 </table>
+
+<div align="center">
+<a href="{{route('admin.products.create')}}" class="btn lg btn-success center">Criar Produto</a><br>
+</div>
 
 {{$products->links()}}
 

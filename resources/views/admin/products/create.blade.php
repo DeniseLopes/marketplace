@@ -4,6 +4,7 @@
     <h1 align="center">Produto</h1>
     <form action="{{ route('admin.products.store') }}" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
         <div class="container">
             <div class="row">
                 <div class="col-6">
@@ -39,15 +40,16 @@
             </div>
             <div class="form-group">
                 <label>Lojas:</label>
-                <select name="user" class="form-control">
+                <select name="store" class="form-control">
                     @foreach ($stores as $store)
                         <option value="{{ $store->id }}">{{ $store->name }}</option>
                     @endforeach
                 </select>
             </div>
-            <div align="center">
-                <button type="submit" class="btn btn-lg  btn-success center">Cadastrar</button>
-            </div>
         </div>
+        <div align="center">
+            <button type="submit" class="btn btn-lg  btn-success center">Cadastrar</button>
+        </div>
+
     </form>
 @endsection

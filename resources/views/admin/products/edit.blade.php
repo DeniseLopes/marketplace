@@ -4,7 +4,7 @@
 
 <h1 align="center">Produto</h1>
 
-<form action="{{ route('admin.products.store') }}" method="post">
+<form action="{{ route('admin.products.update', ['product'=> $product->id])}}" method="post">
 
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     

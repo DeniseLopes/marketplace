@@ -21,6 +21,7 @@ class ProductController extends Controller
     {
         
         $products = $this->product->paginate(10);
+        
         return view('admin.products.index', compact('products'));
     }
 
@@ -32,8 +33,7 @@ class ProductController extends Controller
     
     public function create()
     {
-      $stores = \App\Store::all(['id', 'name']);
-       
+      $stores = \App\Store::all(['id', 'name',]);
        return view('admin.products.create', compact('stores'));
         
     }
@@ -46,7 +46,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $data = $request->all();
+        $store = \App\Store::findOrFail($data['store']);
+        $store->products()->create($data);
+        flash('Produto cadastrado com sucesso!')->success();
+        return redirect()->route('admin.products.index');
     }
 
     /**
