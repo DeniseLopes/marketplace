@@ -84,9 +84,13 @@ class ProductController extends Controller
      * @param  int  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $product)
+    public function update(Request $request, $product) //$product = id
     {
-        
+        $data = $request->all();
+        $product = $this->product->findOrFail($product);
+        $product->update($data);
+        flash('Produto atualizado com sucesso!')->success();
+        return redirect()->route('admin.products.index');
     }
 
     /**

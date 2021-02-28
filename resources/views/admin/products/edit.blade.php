@@ -2,11 +2,12 @@
 
 @section('content')
 
-<h1 align="center">Produto</h1>
+<h1 align="center">Atualizar Produto</h1>
 
 <form action="{{ route('admin.products.update', ['product'=> $product->id])}}" method="post">
 
-    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    @csrf//<input type="hidden" name="_token" value="{{ csrf_token() }}">
+    @method("PUT")//<input type="hidden" name = "_method" value="PUT">
     
     <div class="container">
         <div class="row">
@@ -19,13 +20,13 @@
             <div class="col-6">
                 <div class="form-group">
                     <label>Descrição:</label>
-                    <input type="text" name="description" class="form-control" value="{{$product->description}}">
+                    <input type="text" name="description" class="form-control" value= "{{$product->description}}">
                 </div>
             </div>
         </div>
         <div class="form-group">
             <label>Conteúdo:</label>
-            <textarea name="body" id="" cols="30" class="form-control" rows="10">value="{{$product->body}}"</textarea>
+            <textarea name="body" id="" cols="30" class="form-control" rows="10">"{{$product->body}}"</textarea>
         </div>
         <div class="row">
             <div class="col-6">
