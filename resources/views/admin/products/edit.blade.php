@@ -6,8 +6,9 @@
 
 <form action="{{ route('admin.products.update', ['product'=> $product->id])}}" method="post">
 
-    @csrf//<input type="hidden" name="_token" value="{{ csrf_token() }}">
-    @method("PUT")//<input type="hidden" name = "_method" value="PUT">
+    @csrf 
+  
+    @method("PUT")
     
     <div class="container">
         <div class="row">

@@ -23,7 +23,8 @@ class CreateProductsTable extends Migration
             $table->string('slug');
             
             $table->timestamps();
-
+            $table->softDeletes();
+            
             $table->foreign('store_id')->references('id')->on('stores');
         });
     }

@@ -13,16 +13,15 @@ class ProductController extends Controller
     public function __construct(Product $product)
     {
         $this->product = $product;
-        
     }
- 
+
 
     public function index()
     {
-        
+
         $products = $this->product->paginate(10);
-        
-        return view('admin.products.index', compact('products'));
+        $trash = \App\Product::onlyTrashed()->paginate(10);
+        return view('admin.products.index', compact('products', 'trash'));
     }
 
     /**
@@ -30,12 +29,11 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
     public function create()
     {
-      $stores = \App\Store::all(['id', 'name',]);
-       return view('admin.products.create', compact('stores'));
-        
+        $stores = \App\Store::all(['id', 'name',]);
+        return view('admin.products.create', compact('stores'));
     }
 
     /**
@@ -61,7 +59,6 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        
     }
 
     /**
@@ -101,6 +98,18 @@ class ProductController extends Controller
      */
     public function destroy($product)
     {
-       
+        $product = $this->product->findOrFail($product);
+        $product->delete();
+        flash('Produto removido com sucesso!')->success();
+        return redirect()->route('admin.products.index');
     }
+
+    public function restore($product)
+    {
+        $product = $this->product->onlyTrashed()->findOrFail($product);
+        $product->restore();
+        flash('Loja Restaurada com Sucesso!!')->success();
+        return redirect()->route('admin.products.index');
+    }
+
 }
